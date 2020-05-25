@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+        <h3 style="text-align:center;">Add Event</h3>
+        <form >
+            <div class="form-group" >
+                <label for="addTitle">Title:</label>
+                <input [(ngModel)]="addEventData.title" name="title" type="text" class="form-control" id="addTitle" placeholder="Enter title" required>
+                <!-- <div [hidden]="addEventData.name.valid || addEventData.pristine" class="alert alert-danger">
+                    Name is required
+                    </div> -->
+            </div>
+            <div class="form-group">
+                <label for="addCity">City:</label>
+                <input [(ngModel)]="addEventData.city" name="city" type="text" class="form-control" id="addCity" placeholder="Enter city" required>
+            </div>
+            <div class="form-group">
+                <label for="addStartDate">Start date:</label>
+                <input [(ngModel)]="addEventData.start_date" name="start_date" type="date" class="form-control" id="addStartDate" placeholder="Enter the event's start date" required>
+            </div>
+            <div class="form-group">
+                <label for="addEndDate">End date:</label>
+                <input [(ngModel)]="addEventData.end_date" name="end_date" type="date" class="form-control" id="addEndDate" placeholder="Enter the event's end date" required>
+            </div>
+            <div class="form-group">
+                <label for="addAmount">Amount of people needed:</label>
+                <input [(ngModel)]="addEventData.amount_of_people" name="amount_of_people" type="numer" class="form-control" id="addAmount" placeholder="Enter amount of people needed" required>
+            </div>
+            <div class="form-group">
+                <label for="addPlaceOfMeet">Place of meet:</label>
+                <input [(ngModel)]="addEventData.place_of_meet" name="place_of_meet" type="text" class="form-control" id="addPlaceOfMeet" placeholder="Enter place of meet">
+            </div>
+            <div class="form-group">
+                <label for="addDateOfMeet">Date of meet:</label>
+                <input [(ngModel)]="addEventData.date_of_meet" name="dateofMeet" type="datetime-local" class="form-control" id="addDateOfMeet" placeholder="Enter date of meet">
+            </div>
+
+            <flash-messages></flash-messages>
+            <div class="text-right">
+                <button (click)="addEvent()" type="submit" class="btn btn-primary" style="margin: 15px;">Add Event</button>
+            </div>
+            <flash-messages></flash-messages>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<br>
+<button type="button" [mat-dialog-close]="true" class="close" aria-label="Close"
+style="margin-right:15px; padding:10px;">
+<span aria-hidden="true">&times;</span>
+</button>
+
+<div class="row mt-10 mx-auto">
+  <div class="col-md-10 mb-5 mx-auto">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">{{userInformation.name}} {{userInformation.surname}}</h5>
+        <p class="card-text">{{userInformation.address}}</p>
+<br>
+        <p class="text-left">Courses:</p>
+        <ul>
+          <li class="text-left" *ngFor="let course of courses">{{course.CourseRef.name}}</li>
+        </ul>
+
+      </div>
+      <div class="card-footer text-muted">
+        {{userInformation.email}} // {{userInformation.phone_number}}
+      </div>
+    </div>
+  </div>
+</div>

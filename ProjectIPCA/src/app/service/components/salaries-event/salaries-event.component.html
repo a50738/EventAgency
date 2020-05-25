@@ -1,0 +1,64 @@
+<b>
+    <p style="text-align: center;">List of participants</p>
+</b>
+
+<mat-table class="lessons-table mat-elevation-z8 mx-auto" [dataSource]="listData" matSort>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name & Surname</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.UserRef.name}}  {{element.UserRef.surname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="salary">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Salary</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.salary }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <button mat-icon-button matTooltip="Edit Salary"
+                (click)="this.selectedParticipationData=row" data-toggle="modal" data-target="#editSalaryModal">
+                <mat-icon>edit_outline</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+            Loading data...
+        </mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="noData">
+        <mat-footer-cell *matFooterCellDef colspan="6">
+            There is no data.
+        </mat-footer-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}">
+    </mat-footer-row>
+</mat-table>
+
+
+<div class="modal fade" id="editSalaryModal" tabindex="-1" role="dialog" aria-labelledby="editSalaryModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editSalaryLabel">Insert salary:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" [(ngModel)]="salary" class="form-control" id="salary" placeholder="eg. 150.00" pattern="^[0-9]+\.[0-9][0-9]$">
+          <flash-messages></flash-messages>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editSalary()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>

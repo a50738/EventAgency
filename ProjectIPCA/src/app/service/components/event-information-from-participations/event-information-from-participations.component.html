@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="column left">
+    <b> <p>Title:</p>
+      <p>City:</p>
+      <p>Start date:</p>
+      <p>End date:</p>
+      <p>Meeting place:</p>
+      <p>Date of meet:</p></b>
+    </div>
+    <div class="column right">
+      <p>{{selectedEvent.EventRef.title}}
+      <button type="button" [mat-dialog-close]="true" class="close" aria-label="Close" style="margin-right:15px; padding:10px;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </p>
+      <p>{{selectedEvent.EventRef.city}}</p>
+      <p>{{selectedEvent.EventRef.start_date}}</p>
+      <p>{{selectedEvent.EventRef.end_date}}</p>
+        
+      <p><span *ngIf="selectedEvent.EventRef.place_of_meet==null ; else placeEstablished">soon..</span>
+        <ng-template #placeEstablished>{{selectedEvent.EventRef.place_of_meet}}</ng-template></p>
+        <p><span *ngIf="selectedEvent.EventRef.date_of_meet==null; else dateEstablished">soon..</span>
+          <ng-template #dateEstablished>{{selectedEvent.EventRef.date_of_meet}}</ng-template></p>
+    </div>
+  </div>

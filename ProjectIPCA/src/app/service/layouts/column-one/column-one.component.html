@@ -1,0 +1,15 @@
+
+<!-- Other version -->
+<!-- <div class="w3-sidebar w3-light-grey w3-bar-block" id="menu"> -->
+<div class="w3-light-grey w3-bar-block" id="menu">
+  <h3>MENU</h3>
+    <a class="w3-bar-item w3-button" [routerLink]="['events']" routerLinkActive="active">Events Panel</a>
+    <a class="w3-bar-item w3-button" [routerLink]="['user-events']" routerLinkActive="active">My events</a>
+    <a class="w3-bar-item w3-button" [routerLink]="['salaries']" routerLinkActive="active" *ngIf="permission=='admin'">Salaries</a>
+    <a class="w3-bar-item w3-button" [routerLink]="['users']" routerLinkActive="active" *ngIf="permission=='admin'">Users list</a>
+    <a class="w3-bar-item w3-button" [routerLink]="['add-user']" routerLinkActive="active" *ngIf="permission=='admin'">Add user</a>
+
+    <a id="logout" class="w3-bar-item w3-button w3-deep-orange w3-bottom-align" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" >Logout</a>
+
+  </div>
+  

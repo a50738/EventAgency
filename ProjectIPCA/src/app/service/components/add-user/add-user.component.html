@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+        <h3>Add new user</h3>
+        <br>
+        <form>
+            <div class="form-group">
+                <label for="registerName">Name:</label>
+                <input [(ngModel)]="registerUserData.name" name="name" type="text" class="form-control"
+                    id="registerName" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+                <label for="registerSurname">Surname:</label>
+                <input [(ngModel)]="registerUserData.surname" name="surname" type="text" class="form-control"
+                    id="registerSurname" placeholder="Enter surname" required>
+            </div>
+            <div class="form-group">
+                <label for="registerNumber">Phone number:</label>
+                <input [(ngModel)]="registerUserData.phoneNumber" name="phoneNumber" type="text" class="form-control"
+                    id="registerNumber" placeholder="Enter number" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email address:</label>
+                <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control"
+                    id="registerEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password:</label>
+                <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control"
+                    id="registerPassword" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="registerAddress">Living address:</label>
+                <input [(ngModel)]="registerUserData.address" name="address" type="text" class="form-control"
+                    id="registerAddress" placeholder="Enter address" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-12">
+                      <input type="radio" name="permission" [(ngModel)]="permission" value="user" required> Employee
+                </label>
+                <label class="col-sm-12">
+                      <input type="radio" name="permission" [(ngModel)]="permission" value="admin" required> Moderator/Administrator
+                </label>
+                </div>
+                <flash-messages></flash-messages>
+            <div class="text-right">
+                <button (click)="registerUser()" type="submit" class="btn btn-primary" style="margin: 15px;">Register
+                    the user</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br><br>

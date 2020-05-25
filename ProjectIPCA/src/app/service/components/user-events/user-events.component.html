@@ -1,0 +1,83 @@
+<div class="search-div">
+  <mat-form-field class="search-form-field" floatLabel="never">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="FilterSearch()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="clearSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<mat-table class="lessons-table mat-elevation-z8" [dataSource]="listData" matSort>
+
+  <ng-container matColumnDef="id_user">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.EventRef.start_date }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="id_event">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.EventRef.title }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="salary">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Salary</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.salary }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <span *ngIf="row.EventRef.end_date>=todayDate, else endedEvent">
+        <button mat-icon-button matTooltip="More info" (click)="Info(row)">
+          <mat-icon>info_outline</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Sign off" (click)="this.deleteParticipationData=row"
+          data-toggle="modal" data-target="#deleteParticipationModal">
+          <mat-icon>highlight_off</mat-icon>
+        </button>
+      </span>
+      <ng-template #endedEvent>Event ended</ng-template>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="loading">
+    <mat-footer-cell *matFooterCellDef colspan="6">
+      Loading data...
+    </mat-footer-cell>
+  </ng-container>
+  <ng-container matColumnDef="noData">
+    <mat-footer-cell *matFooterCellDef colspan="6">
+      There is no data.
+    </mat-footer-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+  <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}">
+  </mat-footer-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5"></mat-paginator>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteParticipationModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Do you want to sign off from that event?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- <div class="modal-body">
+          ...
+        </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="SignOff()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

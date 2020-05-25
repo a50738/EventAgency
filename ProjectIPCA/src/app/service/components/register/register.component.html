@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+        <h3>Register Page</h3>
+        <br>
+        <form>
+            <div class="form-group">
+                <label for="registerName">Name:</label>
+                <input [(ngModel)]="registerUserData.name" name="name" type="text" class="form-control"
+                    id="registerName" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+                <label for="registerSurname">Surname:</label>
+                <input [(ngModel)]="registerUserData.surname" name="surname" type="text" class="form-control"
+                    id="registerSurname" placeholder="Enter surname" required>
+            </div>
+            <div class="form-group">
+                <label for="registerNumber">Phone number:</label>
+                <input [(ngModel)]="registerUserData.phoneNumber" name="phoneNumber" type="text" class="form-control"
+                    id="registerNumber" placeholder="Enter number" pattern="\d{9,9}" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email address:</label>
+                <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control"
+                    id="registerEmail" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password:</label>
+                <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control"
+                    id="registerPassword" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="registerAddress">Living address:</label>
+                <input [(ngModel)]="registerUserData.address" name="adress" type="text" class="form-control"
+                    id="registerAdress" placeholder="Enter address" required>
+            </div>
+            <br>
+
+            <!-- Interest selection - additional feature at the future -->
+            <!-- <div class="form-group">
+                <label for="registerInterests">Select your interests (additional):</label>
+                <select [(ngModel)]="registerUserData.interests" name="interests" multiple class="form-control"
+                    id="exampleFormControlSelect2">
+                    <option>Music</option>
+                    <option>Football</option>
+                    <option>Baseball</option>
+                    <option>Basketball</option>
+                    <option>Business & Finance</option>
+                    <option>Computers & Games</option>
+                </select>
+                <small id="interestsHelp" class="form-text text-muted">To select more: hold control button and
+                    click</small>
+            </div> -->
+
+            <div class="form-group">
+                <label for="registerCourses">Select your courses (additional):</label>
+                <select [(ngModel)]="courseDataToSend" name="courses" multiple class="form-control"
+                    id="exampleFormControlSelect2">
+                    <option *ngFor="let course of coursesData" [value]="course.id">{{course.name}}</option>
+                </select>
+                <small id="interestsHelp" class="form-text text-muted">To select more: hold control button and
+                    click; to unselect: hold control buttom and click</small>
+            </div>
+
+            <flash-messages></flash-messages>
+
+            <div class="text-right">
+                <button (click)="registerUser()" type="submit" class="btn btn-primary"
+                    style="margin: 15px;">Register</button>
+            </div>
+            <div class="text-right">
+                <button (click)="loginPanel()" type="submit" class="btn btn-outline-primary"
+                    style="margin: 15px;">Already have an account</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br><br>

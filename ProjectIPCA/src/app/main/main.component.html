@@ -1,0 +1,93 @@
+<body dat-spy="scroll" data-target="#menu">
+    <div id="home"> 
+        <!-- Navigation -->
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md navbar-static-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="assets/logo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuContent">
+                <span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="menuContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <!-- <div *ngIf="router.url === '/main' || router.url === '/main#about' || router.url === '/main#contact'"> -->
+                        <li class="nav-item" *ngIf="router.url === '/main' || router.url === '/main#about' || router.url === '/main#contact'">
+                            <a class="nav-link" href="main/#about">About</a>
+                        </li>    
+                        <li class="nav-item" *ngIf="router.url === '/main' || router.url === '/main#about' || router.url === '/main#contact'">
+                            <a class="nav-link" href="main/#contact">Contact</a>
+                        </li>                
+                        <!-- </div> -->
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" [routerLink]="['service']" routerLinkActive="active">Service</a> -->
+    
+                            <a class="nav-link" routerLink="/service/events">Service</a>
+                            <!-- <a class="nav-link" href="/login-page/login-page.component.html">Service</a> -->
+                        </li>               
+                    </ul> 
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hello Page -->
+    <div class="landing">
+        <div class="home-wrap">
+                <div class="home-inner">
+                </div>
+        </div>
+    </div>
+
+    <!-- Hello Page Caption -->
+    <div class="caption center-block text-center">
+        <h3>Need a security at your event? Here we are!</h3>
+        <a class="btn btn-outline-light" href="main/#about">Read more...</a>
+    </div>
+
+    <!-- About section -->
+    <div id="about">
+        <div class="jumbotron">
+            <h3 class="heading">About us</h3>
+            <div class="row">
+
+                <div class="col-md-4 text-center">
+                    <h4>Rent a security</h4>
+                    <p>We offer good trained people</p>                   
+                </div>
+                <div class="col-md-4 text-center">
+                    <h4>Information service</h4>
+                    <p>Our staff is nice and willing to help</p>                   
+                </div>
+                <div class="col-md-4 text-center">
+                    <h4>Fast response</h4>
+                    <p>Organising group and help for events is piece of cake for us</p>                
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container-fluid footer">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <img src="assets/logo.png">
+                    <p>More information about our company and service can be provided
+                        by visiting our office, calling phone or sending email message.
+                    </p>
+                    <strong>Location</strong>
+                    <p>Opole City<br>42 Kowalczyka</p>
+                    <strong>Contact info</strong>
+                    <p>(+48) 90990990<br>
+                    email@eventagency.com</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<router-outlet></router-outlet>
+
+
