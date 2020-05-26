@@ -308,15 +308,29 @@ router.post('/addParticipation', (req, res) => {
                         })
                     }
                     else {
-                        Participation.create({
-                            id_user: result.id, id_event: req.body.event,
-                            id_position: req.body.position
+                        Participation.count({
+                            where: { id_event: req.body.event },
+                            col: 'participations.id_event'
                         })
-                            .then(createdParticipation => {
-                                res.status(201).json({
-                                    message: "Signed for an event",
-                                    participationId: createdParticipation.id
-                                });
+                            .then(function (count) {
+                                if (count < req.body.amount) {
+                                    Participation.create({
+                                        id_user: result.id, id_event: req.body.event,
+                                        id_position: req.body.position
+                                    })
+                                        .then(createdParticipation => {
+                                            res.status(201).json({
+                                                message: "Signed for an event",
+                                                participationId: createdParticipation.id
+                                            });
+                                        });
+                                }
+                                else {
+                                    res.status(201).json({
+                                        message: "List is full",
+                                    });
+                                }
+
                             });
                     }
                 })

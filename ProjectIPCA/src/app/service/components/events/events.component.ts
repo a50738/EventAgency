@@ -204,9 +204,10 @@ export class EventsComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
-          if (res.message === 'You are already signed') { this._notificationService.warn(res.message) }
-          else if (res.message === 'Signed for an event') { this._notificationService.success(res.message) }
-        },
+          if (res.message == 'You are already signed') { this._notificationService.warn(res.message) }
+          else if (res.message == 'Signed for an event') { this._notificationService.success(res.message) }
+          else if (res.message == 'List is full') { this._notificationService.warn(res.message) }
+  },
         err => {
           console.log(err)
           this._notificationService.warn('Error: ' + err)

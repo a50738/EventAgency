@@ -25,7 +25,7 @@ export class ParticipationService {
 
   addParticiparion(event)
   {
-    return this.http.post<any>(this._addParticipationUrl  , { event:event.id , email: this.currentUserEmail, position: event.id_position})
+    return this.http.post<any>(this._addParticipationUrl  , { event:event.id , email: this.currentUserEmail, position: event.id_position, amount: event.amount_of_people})
   }
 
   getParticipations()
