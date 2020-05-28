@@ -20,6 +20,6 @@
       <p><span *ngIf="selectedEvent.EventRef.place_of_meet==null ; else placeEstablished">soon..</span>
         <ng-template #placeEstablished>{{selectedEvent.EventRef.place_of_meet}}</ng-template></p>
         <p><span *ngIf="selectedEvent.EventRef.date_of_meet==null; else dateEstablished">soon..</span>
-          <ng-template #dateEstablished>{{selectedEvent.EventRef.date_of_meet}}</ng-template></p>
+          <ng-template #dateEstablished>{{selectedEvent.EventRef.date_of_meet | date:"medium"}}</ng-template></p>
     </div>
   </div>
